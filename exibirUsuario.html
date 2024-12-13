@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Usuário</title>
+</head>
+<body>
+    <h1>Dados do Usuário Cadastrado</h1>
+    <div id="dadosUsuario"></div>
+
+    <script>
+        let usuarioJSON = localStorage.getItem('usuario');
+        if (usuarioJSON) {
+            let usuario = JSON.parse(usuarioJSON);
+            let dadosUsuario = document.getElementById('dadosUsuario');
+            dadosUsuario.innerHTML = `
+                <p><strong>Nome:</strong> ${usuario.nome}</p>
+                <p><strong>Apelido:</strong> ${usuario.apelido}</p>
+                <p><strong>Senha:</strong> ********</p>`;
+        } else {
+            document.getElementById('dadosUsuario').innerHTML = '<p>Nenhum usuário cadastrado.</p>';
+        }
+    </script>
+</body>
+</html>
